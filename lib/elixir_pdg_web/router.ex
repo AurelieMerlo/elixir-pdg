@@ -17,7 +17,12 @@ defmodule ElixirPdgWeb.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", WorkerController, :index
-    resources "/workers", WorkerController
+    
+    resources "/shifts", ShiftController, only: [:index]
+
+    resources "/workers", WorkerController do
+      resources "/shifts", ShiftController, only: [:show, :new, :create, :delete]
+    end
   end
 
   # Other scopes may use custom stacks.

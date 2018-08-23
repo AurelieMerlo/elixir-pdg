@@ -1,6 +1,8 @@
 defmodule ElixirPdgWeb.WorkerController do
   use ElixirPdgWeb, :controller
 
+  import Ecto
+
   def index(conn, _params) do
   	workers = ElixirPdg.Repo.all(Worker)
   	render conn, "index.html", workers: workers
@@ -30,8 +32,9 @@ defmodule ElixirPdgWeb.WorkerController do
 
 	def show(conn, %{"id" => id}) do
   	worker = ElixirPdg.Repo.get!(Worker, id)
+    shifts = ElixirPdg.Repo.all assoc(worker, :shifts)
 
-  	render(conn, "show.html", worker: worker)
+  	render(conn, "show.html", worker: worker, shifts: shifts)
 	end
 
 	def edit(conn, %{"id" => id}) do

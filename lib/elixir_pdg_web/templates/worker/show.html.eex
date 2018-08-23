@@ -1,6 +1,33 @@
-<h2><%= @worker.first_name %></h2>
-
-<div>
-	<%= link "Edit", to: worker_path(@conn, :edit, @worker.id), class: "btn btn-default" %>
+<div class="row">
+  <div class="col-md-3">
+    <h2>Worker informations</h2>
+    <div>
+    	<p>Name: <%= @worker.first_name %></p>
+			<p>Status: <%= @worker.status %></p>
+			<p>Price per shift: <%= @worker.price_per_shift %>€</p>
+    </div>
+  </div>
+  <div class="col-md-3">
+  	<h2>Listing shifts for <%= @worker.first_name %></h2>
+  	<table class="table">
+  		<thead>
+    		<tr>
+      		<th>Date</th>
+    		</tr>
+  		</thead>
+  		<tbody>
+				<%= for shift <- @shifts do %>
+    			<tr>
+      			<td><%= shift.start_date %></td>
+            <td><%= link "Delete", to: worker_shift_path(@conn, :delete, @worker, shift), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger" %></td>
+    			</tr>
+				<% end %>
+  		</tbody>
+		</table>
+  </div>
+  <div class="col-md-3 mt-4">
+		<%= link "New Shift", to: worker_shift_path(@conn, :new, @worker), class: "btn btn-default" %>
+		<%= link "Edit", to: worker_path(@conn, :edit, @worker.id), class: "btn btn-default" %>
     <%= link "Delete", to: worker_path(@conn, :delete, @worker), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger" %>
+	</div>
 </div>

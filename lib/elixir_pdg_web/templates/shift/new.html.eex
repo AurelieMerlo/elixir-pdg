@@ -1,0 +1,3 @@
+<h2>Add new shift</h2>
+
+<%= render "form.html", changeset: @changeset, action: worker_shift_path(@conn, :create, @worker), options: [method: "post"] %>

@@ -1,0 +1,10 @@
+<div class="row justify-content-md-center mt-4">
+	<div class="col-md-8">
+    <div class="jumbotron">
+      <div class="page-header">
+      	<%= link "Add Shift", to: "/shifts/new", class: "btn btn-success" %>
+      </div>
+    </div>
+  </div>
+</div>
+
