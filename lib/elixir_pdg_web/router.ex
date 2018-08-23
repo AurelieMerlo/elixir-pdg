@@ -16,7 +16,8 @@ defmodule ElixirPdgWeb.Router do
   scope "/", ElixirPdgWeb do
     pipe_through :browser # Use the default browser stack
 
-    get "/", PageController, :index
+    get "/", WorkerController, :index
+    resources "/workers", WorkerController
   end
 
   # Other scopes may use custom stacks.

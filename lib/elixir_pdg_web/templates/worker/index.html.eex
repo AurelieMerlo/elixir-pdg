@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-md-3">
+    <h3>Workers</h3>
+    <ul class="list-group">
+      <%= for worker <- @workers do %>
+      	<li class="list-group-item">
+      		<%= link to: worker_path(@conn, :show, worker.id) do %>
+      			<%= worker.first_name %> (<%= worker.status %>)
+      		<% end %>
+      	</li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="col-md-9">
+    <div class="jumbotron">
+      <div class="page-header">
+        <h2>Welcome to PDG</h2>
+      </div>
+      <div class="page-header">
+        <h2><small>Choose a worker on the left to get his information</small></h2>
+        <h2><small>or <%= link "Create", to: "/workers/new", class: "btn btn-success" %> a new worker</small></h2>
+      </div>
+    </div>
+  </div>
+</div>

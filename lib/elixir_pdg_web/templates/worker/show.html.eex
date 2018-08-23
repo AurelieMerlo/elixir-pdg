@@ -1,0 +1,6 @@
+<h2><%= @worker.first_name %></h2>
+
+<div>
+	<%= link "Edit", to: worker_path(@conn, :edit, @worker.id), class: "btn btn-default" %>
+    <%= link "Delete", to: worker_path(@conn, :delete, @worker), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger" %>
+</div>
