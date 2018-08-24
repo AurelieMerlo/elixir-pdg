@@ -4,7 +4,7 @@ defmodule ElixirPdgWeb.ShiftController do
   import Ecto
 
   def index(conn, _params) do
-    shifts = ElixirPdg.Repo.all(Shift)
+    shifts = ElixirPdg.Repo.all(Shift) |> ElixirPdg.Repo.preload(:worker)
     render conn, "index.html", shifts: shifts
   end
 

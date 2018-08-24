@@ -1,10 +1,16 @@
 <div class="row justify-content-md-center mt-4">
-	<div class="col-md-8">
-    <div class="jumbotron">
-      <div class="page-header">
-      	<%= link "Add Shift", to: "/shifts/new", class: "btn btn-success" %>
-      </div>
-    </div>
-  </div>
+	<div class="col-md-6">
+		<div class="jumbotron">
+			<h3>Shifts</h3>
+			<div class="col-md">
+				<ul class="list-group">
+					<%= for shift <- @shifts do %>
+						<li class="list-group-item">
+							<%= shift.worker.first_name %> (<%= shift.worker.status %>): <%= shift.start_date %>
+						</li>
+					<% end %>
+				</ul>
+			</div>
+		</div>
+	</div>
 </div>
-
