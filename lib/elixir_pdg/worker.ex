@@ -14,5 +14,6 @@ defmodule Worker do
   def changeset(%Worker{} = worker, attrs) do
     worker
     |> cast(attrs, [:first_name, :status, :price_per_shift])
+    |> validate_required([:first_name, :status, :price_per_shift])
   end
 end

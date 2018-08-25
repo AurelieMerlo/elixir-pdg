@@ -12,5 +12,6 @@ defmodule Shift do
   def changeset(%Shift{} = shift, attrs) do
     shift
     |> cast(attrs, [:start_date, :worker_id])
+    |> validate_required([:start_date, :worker_id])
   end
 end
