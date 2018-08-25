@@ -16,7 +16,8 @@ jobs:
     steps:
       - checkout
 
-      - run: echo '/usr/lib/postgresql/9.6/bin/:$PATH' >> $BASH_ENV
+      - run:
+          command: sudo apt-get update -qq && sudo apt-get install -y build-essential postgresql postgresql-client
 
       - run: mix local.hex --force
       - run: mix local.rebar --force
@@ -49,8 +50,6 @@ jobs:
           key: v1-build-cache
           paths: "_build"
 
-      - run: mix ecto.migrate
-      - run: mix phoenix.digest
       - run: mix test
 
       - store_test_results:
