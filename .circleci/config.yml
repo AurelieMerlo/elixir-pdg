@@ -44,27 +44,8 @@ jobs:
           key: v1-build-cache-{{ .Branch }}
           paths: "_build"
       - save_cache:
-          key: v1-build-cache-{{ .Branch }}
+          key: v1-build-cache
           paths: "_build"
-      - restore_cache:
-          keys:
-            - v1-yarn-cache-{{ .Branch }}-{{ checksum "assets/yarn.lock" }}
-            - v1-yarn-cache-{{ .Branch }}
-            - v1-yarn-cache
-
-      - run:
-          working_directory: assets
-          command: yarn install && yarn test
-
-      - save_cache:
-          key: v1-yarn-cache-{{ .Branch }}-{{ checksum "assets/yarn.lock" }}
-          paths: assets/node_modules
-      - save_cache:
-          key: v1-yarn-cache-{{ .Branch }}
-          paths: assets/node_modules
-      - save_cache:
-          key: v1-yarn-cache
-          paths: assets/node_modules
 
       - run: mix ecto.create && mix ecto.migrate
       - run: mix phoenix.digest
