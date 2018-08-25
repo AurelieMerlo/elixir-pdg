@@ -47,7 +47,7 @@ jobs:
           key: v1-build-cache
           paths: "_build"
 
-      - run: mix ecto.create && mix ecto.migrate
+      - run: mix ecto.migrate
       - run: mix phoenix.digest
       - run: mix test
 
