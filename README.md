@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/AurelieMerlo/elixir-pdg/tree/master.svg?style=svg)](https://circleci.com/gh/AurelieMerlo/elixir-pdg/tree/master)
+
 # ElixirPdg
 
 To start your Phoenix server:
